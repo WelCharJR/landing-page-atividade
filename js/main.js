@@ -5,10 +5,11 @@ function createCryptoCard(crypto) {
     const priceChange = crypto.price_change_percentage_24h;
     const priceChangeClass = priceChange >= 0 ? 'price-up' : 'price-down';
     
+    // Na versão anterior, era uma 'div'. A versão semântica usa 'article'.
     return `
-        <div class="crypto-card fade-in">
+        <article class="crypto-card fade-in">
             <div class="crypto-header">
-                <img src="${crypto.image}" alt="${crypto.name}" width="32">
+                <img src="${crypto.image}" alt="Logo of ${crypto.name}" width="32">
                 <h3>${crypto.name} (${crypto.symbol.toUpperCase()})</h3>
             </div>
             <div class="crypto-price">
@@ -19,7 +20,7 @@ function createCryptoCard(crypto) {
                 <p>Market Cap: $${crypto.market_cap.toLocaleString()}</p>
                 <p>Volume: $${crypto.total_volume.toLocaleString()}</p>
             </div>
-        </div>
+        </article>
     `;
 }
 

@@ -1,4 +1,26 @@
 /* Reset and base styles */
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #00ff88;
+    color: #0a0e17;
+    padding: 8px;
+    z-index: 1001;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Estilo de foco visível para melhor acessibilidade do teclado */
+a:focus, button:focus, [tabindex]:not([tabindex="-1"]):focus {
+    outline: 2px solid #00ff88;
+    outline-offset: 2px;
+}
+
 * {
     margin: 0;
     padding: 0;
