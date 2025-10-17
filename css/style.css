@@ -1,5 +1,4 @@
-/* Reset and base styles */
-
+/* Acessibilidade e Estilos Base */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -15,7 +14,6 @@
     top: 0;
 }
 
-/* Estilo de foco visível para melhor acessibilidade do teclado */
 a:focus, button:focus, [tabindex]:not([tabindex="-1"]):focus {
     outline: 2px solid #00ff88;
     outline-offset: 2px;
@@ -70,7 +68,7 @@ body {
     color: #00ff88;
 }
 
-/* Hero Section */
+/* Hero Section com Bolhas */
 .hero-section {
     height: 100vh;
     display: flex;
@@ -80,6 +78,13 @@ body {
     text-align: center;
     padding: 0 1rem;
     background: linear-gradient(45deg, #0a0e17 0%, #1a1f2c 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section h1, .hero-section p {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-section h1 {
@@ -88,6 +93,91 @@ body {
     background: linear-gradient(45deg, #00ff88, #00bfff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+#crypto-bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.crypto-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, rgba(0, 255, 136, 0) 70%);
+    filter: blur(10px);
+    animation: float 15s infinite alternate ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.crypto-bubble:hover {
+    filter: blur(0);
+    transform: scale(1.2);
+    animation-play-state: paused;
+    z-index: 10;
+}
+
+.crypto-bubble img {
+    width: 60%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.crypto-bubble:hover img {
+    opacity: 1;
+}
+
+.crypto-tooltip {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 14, 23, 0.9);
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.crypto-bubble:hover .crypto-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-name {
+    font-weight: bold;
+}
+
+.tooltip-price {
+    color: #00ff88;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) translateX(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+    }
+    100% {
+        transform: translateY(20px) translateX(-30px) scale(1);
+    }
 }
 
 /* Crypto Grid */
